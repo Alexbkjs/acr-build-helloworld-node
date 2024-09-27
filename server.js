@@ -3,8 +3,8 @@ const http = require('http')
 const port = 80
 
 const server = http.createServer((request, response) => {
-  response.writeHead(200, {'Content-Type': 'text/plain'})
-  response.write('Hello World2\n')
+  response.writeHead(200, { 'Content-Type': 'text/plain' })
+  response.write('Hello World3\n')
   response.end('Version: ' + process.env.NODE_VERSION + '\n')
 })
 

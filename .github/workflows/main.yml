@@ -28,8 +28,8 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
       
       - run: |
-          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp2:${{ github.sha }}
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp2:${{ github.sha }}
+          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
 
       # Terraform steps
       - name: 'Set up Terraform'
@@ -48,6 +48,6 @@ jobs:
           terraform apply -auto-approve \
             -var "resource_group_name=${{ secrets.RESOURCE_GROUP }}" \
             -var "location=westus" \
-            -var "container_group_name=aci-sampleapp2" \
+            -var "container_group_name=aci-sampleapp" \
             -var "registry_login_server=${{ secrets.REGISTRY_LOGIN_SERVER }}" \
             -var "tag=${{ github.sha }}"
